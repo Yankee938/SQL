@@ -1,0 +1,49 @@
+
+-- Fonction prédéfinies
+SELECT CURDATE() -- Retourne la date du jour au format YYYY-MM-DD
+SELECT CURTIME() -- Retourne l'heure au format HH:MM:SS
+
+SELECT DATE_FORMAT('2022-01-12 12:23:45','%d/%m/%Y à %H:%i:%s') -- Permet de changer le format date et heure
+
+SELECT DAYNAME('1994-05-07'); -- Retourner le jour en toute lettre 
+
+
+SELECT DAYNAME(CURDATE ());
+
+SELECT NOW(); -- Retourner la date et l'heure
+SELECT PASSWORD('mypass'); -- Hachage du MDP
+SELECT CONCAT('a','b','c');
+SELECT CONCAT_WS (' /','a', 'b', 'c');
+SELECT LENGTH('moi'); -- Retourne le nombre de caracteres
+
+SELECT LOCATE("j","aujourd'hui");
+SELECT REPLACE('WWW.google.fr', 'W' , 'w');
+
+SELECT TRIM('   bonsoir '); -- Permet de supprimer les caracteres vide avant et apres 
+
+SELECT UPPER ('salut'); -- Mettre en majuscule
+SELECT LOWER ('SALUT'); -- Mettre en minuscule
+
+
+--Fonction utilisateurs 
+
+-- CREER une fonction pour calculer la TVA 
+DELIMITER $ -- on change le déliminteur car dans la fonction nous allons utiliser le ; alors qu'il ne s'agira pas de la fin de notre fonction.
+
+CREATE FUNCTION calcul_tva(nb INT) RETURNS TEXT -- le 'nb' est le parametre de la fonction, 'int integer pour entier ' , La fonction recoit un integer et retournera une
+valeur sous forme de texte. 
+COMMENT 'Fonction permettant le calcul de la TVA'
+BEGIN -- accolade
+    RETURN CONCAT_WS(': ', 'Le résultat est', (nb* 1,196));
+END$-- fin accolade
+
+DELIMITER ;
+
+--JS/ 
+-- fonction_test(nombre){
+--  retrun nombre * 4;
+
+-- }
+
+-- fonction_test(5);
+-- r => 20
